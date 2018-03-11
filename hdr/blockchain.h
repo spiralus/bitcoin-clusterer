@@ -36,7 +36,14 @@ static inline uint64_t loadVarInt(
 
 #define HASHBYTES 32
 
-static const uint32_t gExpectedMagic = 0xd9b4bef9;
+//#define TESTNET
+#ifdef TESTNET
+#define MAGIC_NUMBER 0x01a9fe05
+#else
+#define MAGIC_NUMBER 0xdf03b5f8
+#endif
+
+static const uint32_t gExpectedMagic = MAGIC_NUMBER;
 static const size_t gHeaderSize = 80;
 struct uint160_t { uint8_t v[20]; };
 struct uint256_t { uint8_t v[HASHBYTES]; };
@@ -74,7 +81,7 @@ public:
 
 	const uint8_t *getData() const {
 		if (0 == data) {
-			auto where = lseek64(blockFile->fd, offset, SEEK_SET);
+			auto where = lseek(blockFile->fd, offset, SEEK_SET);
 			if(where!=(signed)offset) {
 				cerr << "failed to seek into block chain file " << blockFile->name << endl;
 			}
