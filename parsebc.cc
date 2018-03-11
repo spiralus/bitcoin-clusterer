@@ -320,7 +320,7 @@ void parseTX(const Block* block, const uint8_t*& p) {
         output.value = value;
         graphout.write((char*)&output, sizeof(output));
 
-        LOG("\t\t\t" << EncodeBase58(output.addr, output.addr+ADDRBYTES) << "\tValue: " << value << "\tType: " << type << endl);
+        LOG("\t\t\t" << EncodeBase58(output.addr, output.addr+ADDRBYTES) << "\tValue: " << value << "\tType: " << endl);
 
         p += outputScriptSize;
 	}

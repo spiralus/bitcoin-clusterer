@@ -305,7 +305,7 @@ int solveOutputScript(
  * addr must be 25 bytes long (ADDRBYTES)
  */
 void hash160ToAddr(uint8_t addr[], const uint8_t pubKeyHash[]) {
-	addr[0] = 0;
+	addr[0] = 50; // 0 for BITCOIN, 50 for MAZA
 	memcpy(&addr[1], pubKeyHash, kRIPEMD160ByteSize);
 
 	uint8_t tmphash[HASHBYTES];

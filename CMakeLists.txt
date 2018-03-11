@@ -36,8 +36,7 @@ if (${CMAKE_CXX_COMPILER_ID} STREQUAL "Clang")
     endif()
 endif()
 
-
-
+#add_definitions("-Wall -Wextra -Wformat -Wformat-security -Wno-unused-parameter -Wstack-protector -fstack-protector-all -fPIC -fvisibility=hidden -DLOG_DEBUG_ENABLED -std=c++11")
 add_definitions("-Wall -Wextra -Wformat -Wformat-security -Wno-unused-parameter -Wstack-protector -fstack-protector-all -fPIC -fvisibility=hidden -std=c++11")
 
 add_executable(parsebc ${CMAKE_CURRENT_SOURCE_DIR}/parsebc.cc)
